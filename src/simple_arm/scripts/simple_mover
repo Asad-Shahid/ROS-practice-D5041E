@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import math
+import rospy
+# we will use Float64 message type to publish position commands for each joint
+from std_msgs.msg import Float64
+
+def mover():
+    # TODO create publishers for the two joints
+    
+    # TODO Initialize the node
+
+    # We use rate to limit the frequency at which certain loops 
+    rate = rospy.Rate(10)
+    start_time = 0
+
+    while not start_time:
+        start_time = rospy.Time.now().to_sec()
+
+    while not rospy.is_shutdown():
+        elapsed = rospy.Time.now().to_sec() - start_time
+        # TODO Publish the Joint angles for two joints (HINT: You can sample angles values from a sine wave 
+        # with period 10sec) Magnitude of each joint value should be between [-pi/2, pi/2]
+        rate.sleep()
+
+if __name__ == '__main__':
+    try:
+        mover()
+    except rospy.ROSInterruptException:
+        pass
